@@ -1,8 +1,8 @@
 import React from 'react';
-import LoveAlbumCarousel from "./components/Album"
+import Album from "./components/Album"
 
 const App = () => {
-  return <LoveAlbumCarousel />;
+  return <Album />;
 };
 
 export default App;
