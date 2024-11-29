@@ -3,17 +3,27 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Heart, X, ArrowLeft, ArrowRight } from 'lucide-react';
 
+// Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-const HeartbeatTitle = ({ children }) => (
-  <h1 className="text-4xl text-center text-rose-600 font-bold mb-12 animate-heartbeat">
+// Simple Title Component
+const LoveTitle = ({ children }) => (
+  <h1 className="text-4xl text-center text-rose-600 font-bold mb-4">
     {children}
   </h1>
 );
 
+// Subtitle Component
+const LoveSubtitle = ({ children }) => (
+  <p className="text-xl text-center text-rose-500 mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
+    {children}
+  </p>
+);
+
+// Individual Photo Modal Component
 const PhotoModal = ({ photo, onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
     <div className="bg-white rounded-2xl overflow-hidden max-w-5xl w-full grid md:grid-cols-2 relative shadow-2xl">
@@ -54,40 +64,96 @@ const Album = () => {
   const photoData = [
     {
       id: 1,
-      thumbnail: '/path/to/first-photo.jpg',
-      fullImage: '/path/to/first-photo.jpg',
-      title: 'Our First Date',
-      description: 'A moment that started everything',
+      thumbnail: require('../assets/images/1.jpg'),
+      fullImage: require('../assets/images/1.jpg'),
+      title: 'Primeira foto',
+      description: 'Primeira foto',
       fullDescription: 'From the first moment we met, I knew something special was beginning. This photo captures the magic of our first date, the nervous excitement, and the spark that would grow into our love.'
     },
     {
       id: 2,
-      thumbnail: '/path/to/second-photo.jpg',
-      fullImage: '/path/to/second-photo.jpg',
-      title: 'Adventure Together',
-      description: 'Exploring the world side by side',
+      thumbnail: require('../assets/images/2.jpg'),
+      fullImage: require('../assets/images/2.jpg'),
+      title: 'Namoro',
+      description: 'Namoro',
       fullDescription: 'Every journey is better when shared with you. This moment reminds me of our spontaneous trips, laughing, and creating memories that will last a lifetime.'
     },
     {
       id: 3,
-      thumbnail: '/path/to/third-photo.jpg',
-      fullImage: '/path/to/third-photo.jpg',
-      title: 'Quiet Moments',
-      description: 'Finding peace in each other\'s presence',
+      thumbnail:  require('../assets/images/3.jpg'),
+      fullImage:  require('../assets/images/2.jpg'),
+      title: 'Dia comum',
+      description: 'Dia comum',
       fullDescription: 'Sometimes the most beautiful moments are the quiet ones. Just being together, no words needed, feeling complete and loved.'
     },
     {
       id: 4,
-      thumbnail: '/path/to/fourth-photo.jpg',
-      fullImage: '/path/to/fourth-photo.jpg',
+      thumbnail:  require('../assets/images/4.jpg'),
+      fullImage: require('../assets/images/4.jpg'),
       title: 'Celebration of Us',
       description: 'Marking milestones together',
       fullDescription: 'Every celebration, big or small, is a testament to our journey. This photo captures the joy of being together and the love we continue to build.'
     },
     {
       id: 5,
-      thumbnail: '/path/to/fifth-photo.jpg',
-      fullImage: '/path/to/fifth-photo.jpg',
+      thumbnail: require('../assets/images/5.jpg'),
+      fullImage: require('../assets/images/5.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 6,
+      thumbnail: require('../assets/images/6.jpg'),
+      fullImage: require('../assets/images/6.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 7,
+      thumbnail: require('../assets/images/7.jpg'),
+      fullImage: require('../assets/images/7.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 8,
+      thumbnail: require('../assets/images/8.jpg'),
+      fullImage: require('../assets/images/8.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 9,
+      thumbnail: require('../assets/images/9.jpg'),
+      fullImage: require('../assets/images/9.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 10,
+      thumbnail: require('../assets/images/10.jpg'),
+      fullImage: require('../assets/images/10.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 11,
+      thumbnail: require('../assets/images/11.jpg'),
+      fullImage: require('../assets/images/11.jpg'),
+      title: 'Unexpected Moments',
+      description: 'Finding joy in the unexpected',
+      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+    },
+    {
+      id: 12,
+      thumbnail: require('../assets/images/12.jpg'),
+      fullImage: require('../assets/images/12.jpg'),
       title: 'Unexpected Moments',
       description: 'Finding joy in the unexpected',
       fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
@@ -116,7 +182,10 @@ const Album = () => {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto">
-        <HeartbeatTitle>Nossos 12 meses</HeartbeatTitle>
+        <LoveTitle>Nossa história</LoveTitle>
+        <LoveSubtitle>
+          Um pouco de cada momento que vivemos nos nossos primeiros doze meses até aqui
+        </LoveSubtitle>
         
         <div className="relative group">
           <Swiper
