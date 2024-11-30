@@ -3,27 +3,23 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Heart, X, ArrowLeft, ArrowRight } from 'lucide-react';
 
-// Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-// Simple Title Component
 const LoveTitle = ({ children }) => (
   <h1 className="text-4xl text-center text-rose-600 font-bold mb-4">
     {children}
   </h1>
 );
 
-// Subtitle Component
 const LoveSubtitle = ({ children }) => (
   <p className="text-xl text-center text-rose-500 mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
     {children}
   </p>
 );
 
-// Individual Photo Modal Component
 const PhotoModal = ({ photo, onClose }) => (
   <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
     <div className="bg-white rounded-2xl overflow-hidden max-w-5xl w-full grid md:grid-cols-2 relative shadow-2xl">
@@ -33,7 +29,6 @@ const PhotoModal = ({ photo, onClose }) => (
         <p className="text-lg text-gray-700 mb-4 leading-relaxed">{photo.fullDescription}</p>
         <div className="flex items-center mt-6">
           <Heart className="text-rose-500 mr-3" size={24} />
-          <span className="text-gray-600 italic">A moment we shared</span>
         </div>
       </div>
       
@@ -56,107 +51,49 @@ const PhotoModal = ({ photo, onClose }) => (
   </div>
 );
 
-// Main Carousel Component
 const Album = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  // Improved photo data with more meaningful content
   const photoData = [
     {
       id: 1,
       thumbnail: require('../assets/images/1.jpg'),
       fullImage: require('../assets/images/1.jpg'),
-      title: 'Primeira foto',
-      description: 'Primeira foto',
-      fullDescription: 'From the first moment we met, I knew something special was beginning. This photo captures the magic of our first date, the nervous excitement, and the spark that would grow into our love.'
+      title: 'Início',
+      description: 'Início',
+      fullDescription: 'No dia em que você chegou eu estava ausente das minhas emoções relacionadas ao amor. Não havia vontade, desejo ou interesse por ninguém. Via todos como pontos no céu, distantes, pequenas estrelas. Foi aí que você apareceu, como um cometa que rasga o céu, que ilumina uma noite: Forte, lindo, sobrenatural.'
     },
     {
       id: 2,
       thumbnail: require('../assets/images/2.jpg'),
       fullImage: require('../assets/images/2.jpg'),
-      title: 'Namoro',
-      description: 'Namoro',
-      fullDescription: 'Every journey is better when shared with you. This moment reminds me of our spontaneous trips, laughing, and creating memories that will last a lifetime.'
+      title: 'Conhecer',
+      description: 'Conhecer',
+      fullDescription: 'Não tinha como ser de outra maneira, logo me apaixonei por você. Era tão engraçado sentir um frio na barriga tão grande quando chegava alguma mensagem sua, quando saíamos para encontros, quando víamos filmes online porque queríamos ter algum momento juntos na semana. Descobrir você, cada história e vivência que te compõem, seus jeitos e sonhos foi umas das experiências mais bonitas que eu já tive.'
     },
     {
       id: 3,
-      thumbnail:  require('../assets/images/3.jpg'),
-      fullImage:  require('../assets/images/2.jpg'),
-      title: 'Dia comum',
-      description: 'Dia comum',
-      fullDescription: 'Sometimes the most beautiful moments are the quiet ones. Just being together, no words needed, feeling complete and loved.'
-    },
-    {
-      id: 4,
-      thumbnail:  require('../assets/images/4.jpg'),
-      fullImage: require('../assets/images/4.jpg'),
-      title: 'Celebration of Us',
-      description: 'Marking milestones together',
-      fullDescription: 'Every celebration, big or small, is a testament to our journey. This photo captures the joy of being together and the love we continue to build.'
+      thumbnail:  require('../assets/images/7.jpg'),
+      fullImage:  require('../assets/images/7.jpg'),
+      title: 'Amar',
+      description: 'Amar',
+      fullDescription: 'E desse apaixonar surgiu o amor. Sempre me perguntava, como canta Academia da Berlinda, qual era "a forma mais bonita de dizer eu te amo". Pensei tanto em como falar isso mas você simplesmente quebrou o silêncio com um sussurro espontâneo: "eu te amo". Pra mim, aquele sussurro foi a forma mais bonita de dizer eu te amo.'
     },
     {
       id: 5,
-      thumbnail: require('../assets/images/5.jpg'),
-      fullImage: require('../assets/images/5.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+      thumbnail: require('../assets/images/11.jpg'),
+      fullImage: require('../assets/images/11.jpg'),
+      title: 'Cotidiano',
+      description: 'Cotidiano',
+      fullDescription: 'Finalmente parece que tenho deitado ao seu lado cem anos seguidos. Em toda madrugada de terça a plenitude de você deitada no meu peito. Em cada amanhecer de quarta o seu abraço em forma de preguiça. O amor finalmente (ou a beleza do cotidiano).'
     },
     {
       id: 6,
-      thumbnail: require('../assets/images/6.jpg'),
-      fullImage: require('../assets/images/6.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 7,
-      thumbnail: require('../assets/images/7.jpg'),
-      fullImage: require('../assets/images/7.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 8,
-      thumbnail: require('../assets/images/8.jpg'),
-      fullImage: require('../assets/images/8.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 9,
-      thumbnail: require('../assets/images/9.jpg'),
-      fullImage: require('../assets/images/9.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 10,
       thumbnail: require('../assets/images/10.jpg'),
       fullImage: require('../assets/images/10.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 11,
-      thumbnail: require('../assets/images/11.jpg'),
-      fullImage: require('../assets/images/11.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
-    },
-    {
-      id: 12,
-      thumbnail: require('../assets/images/12.jpg'),
-      fullImage: require('../assets/images/12.jpg'),
-      title: 'Unexpected Moments',
-      description: 'Finding joy in the unexpected',
-      fullDescription: 'Life is full of surprises, and I\'m grateful to face them with you. This moment captures the spontaneity and fun that defines our relationship.'
+      title: 'Futuro',
+      description: 'Futuro',
+      fullDescription: 'Após nos vermos as primeiras vezes ficou na minha mente a frase do livro noites brancas: "Um minuto inteiro de felicidade! Mas será isso bastante para uma vida toda?". Doze meses não foram o bastante para toda uma vida, por isso quero continuar vivendo, espero que por toda a vida.'
     }
   ];
 
